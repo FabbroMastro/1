@@ -49,7 +49,7 @@ localhost:8001/deuda_total/fecha/20-08-2022/target/NEW
 # Build the project:
 Cada Proyecto es un proyecto Spring Boot y esta ya configurado para el build de las imagines Docker.(no pude crear y testiar un Doker.compose porque la ambientacion de Docker presenta problemas entonces tuve necesariamente hacerlo por linea de comando)
 
-Vamos a ver como se contruye el servicio para: 
+Vamos a ver como se contruye el servicio para (Pon el codigo de Build e Run en la consola para despleguar la imagen): 
 # target:
 Build: "Docker build -t target:v1 ."
 Run: "docker run -p 8003:8003 --name target --network net-prestamo target:v1"
@@ -64,6 +64,6 @@ Run: "docker run -p 8001:8001 --name prestamo --network net-prestamo prestamo:v1
 
 # eureka:
 Build: "Docker build -t prestamo:v1 ."
-Run: "docker run -p 8001:8001 --name prestamo --network net-prestamo prestamo:v1"
+Run: "docker run -p 8761:8761 --name eureka-server --network net-prestamo eureka-server:v1"
 
 
