@@ -29,21 +29,21 @@ Se utiliza este Arquitectura porque es mas posible encontrarla en situaciones re
 
 # Endpoints:
 # target:
-GET localhost:8001/listar
-GET localhost:8001/ver/1
-POST localhost:8001/actualizar_target se envia en el request body un objeto tipo Target ejemplo:
+- GET localhost:8001/listar
+- GET localhost:8001/ver/1
+- POST localhost:8001/actualizar_target se envia en el request body un objeto tipo Target ejemplo:
 
 
 # user:
-GET localhost:8001/listar
-GET localhost:8001/ver/1
+- GET localhost:8001/listar
+- GET localhost:8001/ver/1
 
 # prestamo:
-POST localhost:8001/solicitud-prestamo
-GET localhost:8001/lista-prestamos/from/15-08-2022/to/20-08-2022
-localhost:8001/pago-debito
-localhost:8001/deuda/fecha/20-08-2022
-localhost:8001/deuda_total/fecha/20-08-2022/target/NEW
+- POST localhost:8001/solicitud-prestamo
+- GET localhost:8001/lista-prestamos/from/15-08-2022/to/20-08-2022
+- localhost:8001/pago-debito
+- localhost:8001/deuda/fecha/20-08-2022
+- localhost:8001/deuda_total/fecha/20-08-2022/target/NEW
 
 
 # Build the project:
@@ -51,19 +51,19 @@ Cada Proyecto es un proyecto Spring Boot y esta ya configurado para el build de 
 
 Vamos a ver como se contruye el servicio para (Pon el codigo de Build e Run en la consola para despleguar la imagen): 
 # target:
-Build: "Docker build -t target:v1 ."
-Run: "docker run -p 8003:8003 --name target --network net-prestamo target:v1"
+- Build: "Docker build -t target:v1 ."
+- Run: "docker run -p 8003:8003 --name target --network net-prestamo target:v1"
 
 # user:
-Build: "Docker build -t user:v1 ."
-Run: "docker run -p 8002:8002 --name user --network net-prestamo user:v1"
+- Build: "Docker build -t user:v1 ."
+- Run: "docker run -p 8002:8002 --name user --network net-prestamo user:v1"
 
 # prestamo:
-Build: "Docker build -t prestamo:v1 ."
-Run: "docker run -p 8001:8001 --name prestamo --network net-prestamo prestamo:v1"
+- Build: "Docker build -t prestamo:v1 ."
+- Run: "docker run -p 8001:8001 --name prestamo --network net-prestamo prestamo:v1"
 
 # eureka:
-Build: "Docker build -t prestamo:v1 ."
-Run: "docker run -p 8761:8761 --name eureka-server --network net-prestamo eureka-server:v1"
+- Build: "Docker build -t prestamo:v1 ."
+- Run: "docker run -p 8761:8761 --name eureka-server --network net-prestamo eureka-server:v1"
 
 
