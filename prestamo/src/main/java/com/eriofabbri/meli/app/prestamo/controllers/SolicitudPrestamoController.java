@@ -61,28 +61,29 @@ public class SolicitudPrestamoController {
 
         switch (data.getTarget()){
             case "NEW":
-                if (data.getCant() < 0 && data.getCant() > 2 )
+                if (data.getCant() < 0 && data.getCant() < 2 )
                 {
                     return ResponseEntity.ok("Numero de prestamos superadas");
                 }
                 if (solicitudPrestamoRequestbody.getAmount()> data.getAmount_total()){
                     return ResponseEntity.ok("Cantidad de prestamo superado");
                 }
-                target = data;
-                target.setCant(data.getCant()+1);
+                target = targetService.findById(user.getTarget_id());
+                int cant = target.getCant() + 1;
+                target.setCant(cant);
                 targetService.saveTarget(target);
 
                 break;
             case "FREQUENT":
-                if (data.getCant() < 2 && data.getCant() > 5 )
+                if (data.getCant() < 2 || data.getCant() > 5 )
                 {
                     return ResponseEntity.ok("Numero de prestamos superadas");
                 }
                 if (solicitudPrestamoRequestbody.getAmount()> data.getAmount_total()){
                     return ResponseEntity.ok("Cantidad de prestamo superado");
                 }
-                target = data;
-                target.setCant(data.getCant()+1);
+                target = targetService.findById(user.getTarget_id());
+                target.setCant(target.getCant() + 1);
                 targetService.saveTarget(target);
                 break;
             case "PREMIUM":
@@ -93,10 +94,9 @@ public class SolicitudPrestamoController {
                 if (solicitudPrestamoRequestbody.getAmount()> data.getAmount_total()){
                     return ResponseEntity.ok("Cantidad de prestamo superado");
                 }
-                target = data;
-                target.setCant(data.getCant()+1);
+                target = targetService.findById(user.getTarget_id());
+                target.setCant(target.getCant() + 1);
                 targetService.saveTarget(target);
-                break;
         }
         //se crea algoritmo para calcular la cuota mensual
 
