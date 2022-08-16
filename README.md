@@ -31,7 +31,7 @@ Se utiliza este Arquitectura porque es mas posible encontrarla en situaciones re
 # target:
 # user:
 # prestamo:
-#Build the project:
+# Build the project:
 Cada Proyecto es un proyecto Spring Boot y esta ya configurado para el build de las imagines Docker.
 Vamos a ver como se contruye el servicio para: 
 # target:
